@@ -4,7 +4,7 @@
 ## Database credential
     'user': 'root',
     'password': 'challenge48h',
-    'host': '104.155.72.193',c
+    'host': '104.155.72.193',
     'client_flags': [ClientFlag.SSL],
     'ssl_ca': 'ssl/server-ca.pem',
     'ssl_cert': 'ssl/client-cert.pem',
