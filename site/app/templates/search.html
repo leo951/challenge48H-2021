@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block title %}Rechercher{% endblock %}
+
+{% block link %}{% endblock %}
+
+{% block body %}
+<style>
+    .container{
+        margin-top: 50px;
+    }
+    .cancelmargintopdufutureboum{
+        margin-top: 0;
+    }
+  
+    input[type="file"] {
+        display: none;
+    }
+    .custom-file-upload {
+        border: 1px solid #ccc;
+        /* display: inline-block; */
+        padding: 6px 12px;
+        cursor: pointer;
+        margin: 0;
+        margin-right: 50px;
+        border-radius: 4px;
+    }
+    .center{
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+    }
+  
+    .checkbox{
+        margin-bottom: 16px;
+        text-align: center;
+    }
+  
+    .input-group-text{
+        width: 150px;
+        justify-content: center;
+    }
+</style>
+
+<div class="container">
+    <div class="card-header" style="margin-bottom: 25px;">
+        <h4 style="text-align: center;">Recherche d'images dans la base de donnée :</h4> 
+    </div>
+    <form enctype="multipart/form-data" id="myform" action="/search" method="POST">
+
+        <div class="row">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Nom recherché</span>
+                    <input type="text" id="picture_name" name="picture_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nom de l'image">
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Type recherché</span>
+                    <input type="text" id="picture_name" name="picture_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nom de l'image">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Auteur recherché</span>
+                    <input type="text" id="picture_name" name="picture_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nom de l'image">
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Tag recherché</span>
+                    <input type="text" id="picture_name" name="picture_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nom de l'image">
+                </div>
+            </div>
+        </div>
+
+        <div class="row checkbox">
+            <div class="col">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="with_product">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Image avec produit</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="with_human">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Image avec des humains</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="is_vertical">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Image institutionnelle</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="is_limited">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Format vertical</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="center">
+                <button class="btn btn-success" style="padding: 5px 100px;" type="submit">Rechercher</button>
+            </div>
+            
+        </div>
+        
+    </form>
+</div>
+
+{% endblock body %}
+
+{% block js %}
+{% endblock %}

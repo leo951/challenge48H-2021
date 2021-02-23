@@ -1,0 +1,159 @@
+{% extends "base.html" %} {% block title %}Créer{% endblock %} {% block link
+%}{% endblock %} {% block body %}
+
+
+
+
+{% if message %}
+<div class='card-panel red darken-1 center-align'> {{message}} </div>
+{% endif %}
+
+<style>
+  .container{
+      margin-top: 50px;
+  }
+  .cancelmargintopdufutureboum{
+      margin-top: 0;
+  }
+
+  input[type="file"] {
+      display: none;
+  }
+  .custom-file-upload {
+      border: 1px solid #ccc;
+      /* display: inline-block; */
+      padding: 6px 12px;
+      cursor: pointer;
+      margin: 0;
+      margin-right: 50px;
+      border-radius: 4px;
+  }
+  .center{
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+  }
+
+  .checkbox{
+      margin-bottom: 16px;
+      text-align: center;
+  }
+
+  .input-group-text{
+      width: 150px;
+      justify-content: center;
+  }
+</style>
+
+<div class="container">
+  <div class="card-header" style="margin-bottom: 25px;">
+      <h4 style="text-align: center;">Ajout d'images dans la base de donnée :</h4> 
+  </div>
+  <form enctype="multipart/form-data" id="myform" action="" method="POST">
+      <div class="row">
+          <div class="col">
+              <div class="input-group mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Nom de l'image</span>
+                  <input type="text" id="picture_name" name="picture_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nom de l'image">
+              </div>
+          </div>
+          <div class="col">
+              <div class="input-group mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Type de l'image</span>
+                  <!-- <input type="text" id="picture_type" name="picture_type" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Type de l'image"> -->
+                  <select class="form-select form-control" id="inputGroupSelect01">
+                      <option selected>Choose...</option>
+                      <option value="1">Institutionnelle</option>
+                      <option value="2">Ambiance</option>
+                      <option value="3">Logo</option>
+                    </select>
+              </div>
+          </div>
+      </div>
+
+      <div class="row checkbox">
+          <div class="col">
+              <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="with_product">
+                  <label class="form-check-label" for="flexSwitchCheckDefault">Avec produit</label>
+              </div>
+          </div>
+          <div class="col">
+              <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="with_human">
+                  <label class="form-check-label" for="flexSwitchCheckDefault">Avec humain</label>
+              </div>
+          </div>
+          <div class="col">
+              <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="is_vertical">
+                  <label class="form-check-label" for="flexSwitchCheckDefault">Format vertical</label>
+              </div>
+          </div>
+          <div class="col">
+              <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="is_limited">
+                  <label class="form-check-label" for="flexSwitchCheckDefault">Droit utilisation limitée</label>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col">
+              <div class="input-group mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Crédit de l'image</span>
+                  <input type="text" id="picture_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Crédit de l'image">
+              </div>
+          </div>
+          <div class="col">
+              <div class="input-group mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Copyright</span>
+                  <input type="text" id="picture_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Copyright">
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col">
+              <div class="input-group mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Date de l'image</span>
+                  <input type="date" id="picture_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nom de l'image">
+              </div>
+          </div>
+          <div class="col">
+              <div class="input-group mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Tags</span>
+                  <input type="text" id="picture_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Tag , autreTag , encoreAutreTag">
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="center">
+              <label class="custom-file-upload">
+                  <input type="file" accept="image/png, image/jpeg" multiple/>
+                  Importez des images
+              </label>
+              <button type="submit" style="width: 160px;" class="btn btn-success">
+                  <i class="material-icons">Enregistrer</i>
+              </button>
+          </div>          
+      </div>
+  </form>
+  
+{% endblock body %} 
+
+{% block js %}
+<script>
+var i = 0;
+function newTag() {
+  i++;
+  var iterator = i.toString();
+  var div_start = "<div class=\"input-field col s5\" id=\"tagholder\"><input placeholder=\"Nom du tag\" id=\"tag";
+  var div_middle = "\" name=\"tag"
+  var div_end = "\" type=\"text\" class=\"validate\" required /><label for=\"picture_name\">Nom du tag</label></div>";
+  var final_div = div_start + iterator + div_middle + iterator + div_end;
+  $("#parenttag").append(final_div);
+}
+</script>
+{% endblock %}

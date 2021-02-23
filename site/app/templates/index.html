@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+  <style>
+    .mcard{
+      margin-top: 35px;
+    }
+  </style>
+  <div class="container">
+    <div class="pb-5 mb-sm-1">
+      <div class="row">
+        {% for image in images %}
+          <!-- Category-->
+          <div class="col-md-4 col-sm-6 mcard">
+            <div class="card border-0 mb-grid-gutter">
+              <a class="card-img-tiles" href="shop-style1-ls.html">
+                <div class="main-img"><img src="static/{{image.path}}" width="350px" height="350px" style="margin-bottom: 4px;" alt=""></div>
+              </a>
+              <div class="card-body border mt-n1 py-4 text-center">
+                <h2 class="h5 mb-1">{{image.name}}</h2> 
+                <span class="d-block mb-3 font-size-xs text-muted">&copy;{{image.copyright}}<span class="d-block mb-3 font-size-xs text-muted">{{image.end_date}}</span></span>
+                <span class="d-block mb-3 font-size-xs text-muted">{{image.type}}</span>
+                <a class="btn btn-pill btn-outline-primary btn-sm" href="static/{{image.path}}">Download</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock body %}
+
+{% block js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script
+			  src="https://code.jquery.com/jquery-3.5.1.js"
+			  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+			  crossorigin="anonymous">
+    </script>
+{% endblock %}
