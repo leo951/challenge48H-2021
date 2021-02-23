@@ -29,7 +29,7 @@
       border-radius: 4px;
   }
   .center{
-      margin: 0 auto;
+      margin: 0 auto 15px auto;
       display: flex;
       align-items: center;
   }
@@ -42,6 +42,10 @@
   .input-group-text{
       width: 150px;
       justify-content: center;
+  }
+
+  #list_tag p{
+      margin: 0 10px;
   }
 </style>
 
@@ -122,9 +126,14 @@
           </div>
           <div class="col">
               <div class="input-group mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Tags</span>
-                  <input type="text" id="picture_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Tag , autreTag , encoreAutreTag">
+                  <span class="input-group-text" id="addTag">Tags</span>
+                  <input type="text" id="tag_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Tag">
               </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="center" id="list_tag">
           </div>
       </div>
 
@@ -145,15 +154,14 @@
 
 {% block js %}
 <script>
-var i = 0;
-function newTag() {
-  i++;
-  var iterator = i.toString();
-  var div_start = "<div class=\"input-field col s5\" id=\"tagholder\"><input placeholder=\"Nom du tag\" id=\"tag";
-  var div_middle = "\" name=\"tag"
-  var div_end = "\" type=\"text\" class=\"validate\" required /><label for=\"picture_name\">Nom du tag</label></div>";
-  var final_div = div_start + iterator + div_middle + iterator + div_end;
-  $("#parenttag").append(final_div);
-}
+    $('#addTag').click(function(){
+        $('#list_tag').append('<p>'+$('#tag_name')[0].value+'</p>');
+        $('#tag_name')[0].value = "";
+        let listTag = $('#list_tag p');
+        listTag[listTag.length-1].onclick = function(){
+            $(this).remove();
+            console.log('test')
+        }
+    });
 </script>
 {% endblock %}
